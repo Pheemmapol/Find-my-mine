@@ -10,15 +10,14 @@ public enum ServerPackets
     name = 0,
     welcome = 1,
     clickpos = 2,
-    state = 3
+    genericinfo = 3
 }
 
 /// <summary>Sent from client to server.</summary>
 public enum ClientPackets
 {
     welcomeReceived = 1,
-    clickpos = 2,
-    state = 3
+    clickpos = 2
 }
 
 public class Packet : IDisposable

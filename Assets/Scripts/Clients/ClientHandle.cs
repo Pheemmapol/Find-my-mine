@@ -30,4 +30,10 @@ public class ClientHandle : MonoBehaviour
 
 
     }
+
+    public static void GetGenericInfo(Packet _packet)
+    {
+        string _msg = _packet.ReadString();
+        Debug.Log($"Message from server: {_msg}");
+    }
 }
