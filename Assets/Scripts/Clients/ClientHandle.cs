@@ -36,4 +36,31 @@ public class ClientHandle : MonoBehaviour
         string _msg = _packet.ReadString();
         Debug.Log($"Message from server: {_msg}");
     }
+
+    public static void GetState(Packet _packet)
+    {
+        string _msg = _packet.ReadString();
+        Debug.Log($"Message from server: {_msg}");
+        string[] message = _msg.Split(',');
+        switch (int.Parse(message[0]))
+        {
+            case (0):
+                //reset board
+                TileManager.ResetBoard();
+                break;
+            case (1):
+                if(int.Parse(message[1]) == Client.instance.myId)
+                {
+                    //My turn
+                    GameManager.Instance.ChangeState(GameManager.GameState.PlayerTurn);
+                }
+                else
+                {
+                    //Enemy Turn
+                    GameManager.Instance.ChangeState(GameManager.GameState.EnemyTurn);
+                }
+                break;
+        }
+
+    }
 }

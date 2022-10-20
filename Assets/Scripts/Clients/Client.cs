@@ -173,7 +173,8 @@ public class Client : MonoBehaviour
             { (int)ServerPackets.name, ClientHandle.UpdateName },
             { (int)ServerPackets.welcome, ClientHandle.Welcome },
             { (int)ServerPackets.clickpos, ClientHandle.GetClickPos},
-            {(int)ServerPackets.genericinfo, ClientHandle.GetGenericInfo }
+            {(int)ServerPackets.genericinfo, ClientHandle.GetGenericInfo },
+            {(int) ServerPackets.state, ClientHandle.GetState }
         };
         Debug.Log("Initialized packets.");
     }

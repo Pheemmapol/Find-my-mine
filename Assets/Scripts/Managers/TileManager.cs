@@ -52,7 +52,13 @@ public class TileManager : MonoBehaviour
          _cam.transform.position = new Vector3((float)_height / 2 - 0.5f, (float)_width / 2 - 0.5f, -10);
     }
 
-
+    public static void ResetBoard()
+    {
+        foreach(var tile in _tiles.Values)
+        {
+            tile.UnrevealTile();
+        }
+    }
 
     public static void RevealTile(Vector2 pos,bool isBomb)
     {

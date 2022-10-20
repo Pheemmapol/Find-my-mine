@@ -10,7 +10,8 @@ public enum ServerPackets
     name = 0,
     welcome = 1,
     clickpos = 2,
-    genericinfo = 3
+    genericinfo = 3,
+    state = 4
 }
 
 /// <summary>Sent from client to server.</summary>

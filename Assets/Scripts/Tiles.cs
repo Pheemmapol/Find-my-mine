@@ -25,6 +25,7 @@ public class Tiles : MonoBehaviour
     public void SetToNormalcolor()
     {
         _renderer.color = _normalTileColor;
+        hasPressed = false;
     }
     public void SetToPressedcolor()
     {
@@ -38,6 +39,7 @@ public class Tiles : MonoBehaviour
         {
             hasPressed = true;
             //click
+            GameManager.Instance.ChangeState(GameManager.GameState.EnemyTurn);
             ClientSend.SendClickPos((int)position.x, (int)position.y);
         }
     }
@@ -45,7 +47,7 @@ public class Tiles : MonoBehaviour
 
     void OnMouseOver()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && GameManager.Instance.State == GameManager.GameState.PlayerTurn)
         {
             OnLeftClick();
         }
@@ -60,9 +62,15 @@ public class Tiles : MonoBehaviour
         }
 
     }
+
+    public void UnrevealTile()
+    {
+        SetToNormalcolor();
+        _bomb.SetActive(false);
+    }
     void OnMouseEnter()
     {
-        if (!hasPressed)
+        if (!hasPressed && GameManager.Instance.State == GameManager.GameState.PlayerTurn)
         {
             _highlight.SetActive(true);
         }
