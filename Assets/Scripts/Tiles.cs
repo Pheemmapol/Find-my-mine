@@ -66,6 +66,7 @@ public class Tiles : MonoBehaviour
     public void UnrevealTile()
     {
         SetToNormalcolor();
+        _highlight.SetActive(false);
         _bomb.SetActive(false);
     }
     void OnMouseEnter()

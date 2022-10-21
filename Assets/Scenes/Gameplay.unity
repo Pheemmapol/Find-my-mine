@@ -154,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NameList: {fileID: 1162433718}
   Score: {fileID: 1485516224}
+  Turn: {fileID: 2030874706}
 --- !u!4 &6766079
 Transform:
   m_ObjectHideFlags: 0
