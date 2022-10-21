@@ -8,7 +8,7 @@ public class ClientHandle : MonoBehaviour
     public static void UpdateName(Packet _packet)
     {
         string _msg = _packet.ReadString();
-        GameUIManager.instance.UpdateName(_msg);
+        GameUIManager.instance.UpdateNameList(_msg);
     }
 
     public static void Welcome(Packet _packet)
@@ -27,6 +27,10 @@ public class ClientHandle : MonoBehaviour
         string[] pos =  _msg.Split(',');
         TileManager.RevealTile(new Vector2(int.Parse(pos[0]), int.Parse(pos[1])), int.Parse(pos[2]) == 1 ? true:false);
         Debug.Log($"Message from server: {_msg}");
+        if (int.Parse(pos[3]) == Client.instance.myId)
+        {
+            GameUIManager.instance.UpdateScore(int.Parse(pos[4]));
+        }
 
 
     }

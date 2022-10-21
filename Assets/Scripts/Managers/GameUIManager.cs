@@ -7,6 +7,8 @@ public class GameUIManager : MonoBehaviour
 {
     public static GameUIManager instance;
     public TextMeshProUGUI NameList;
+    public TextMeshProUGUI Name;
+    public TextMeshProUGUI Score;
 
     private void Awake()
     {
@@ -22,10 +24,17 @@ public class GameUIManager : MonoBehaviour
 
     }
 
-    public void UpdateName(string newname)
+    public void UpdateNameList(string newname)
     {
         NameList.text = newname;
     }
 
-
+    public void UpdateScore(int score)
+    {
+        Score.text = score.ToString();
+    }
+    public void UpdateName(string name)
+    {
+        Name.text = name;
+    }
 }
