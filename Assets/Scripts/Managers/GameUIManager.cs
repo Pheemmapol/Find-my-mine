@@ -6,9 +6,12 @@ using TMPro;
 public class GameUIManager : MonoBehaviour
 {
     public static GameUIManager instance;
-    public TextMeshProUGUI NameList;
+    public TextMeshProUGUI Name1;
+    public TextMeshProUGUI Name2;
     public TextMeshProUGUI Score;
     public TextMeshProUGUI Turn;
+    public GameObject GameOverScreen;
+    public TextMeshProUGUI Winner;
 
     private void Awake()
     {
@@ -24,9 +27,10 @@ public class GameUIManager : MonoBehaviour
 
     }
 
-    public void UpdateNameList(string newname)
+    public void UpdateNameText(string name1,string name2)
     {
-        NameList.text = newname;
+        Name1.text = name1;
+        Name2.text = name2;
     }
 
     public void UpdateScore(int score)
@@ -36,5 +40,15 @@ public class GameUIManager : MonoBehaviour
     public void UpdateTurn()
     {
         Turn.text = GameManager.Instance.State == GameManager.GameState.PlayerTurn ? "Your turn" : "Enemy's Turn";
+    }
+
+    public void ShowGameOver()
+    {
+        GameOverScreen.SetActive(true);
+    }
+
+    public void HideGameOver()
+    {
+        GameOverScreen.SetActive(false);
     }
 }

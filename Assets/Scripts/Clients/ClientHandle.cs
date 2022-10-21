@@ -8,7 +8,8 @@ public class ClientHandle : MonoBehaviour
     public static void UpdateName(Packet _packet)
     {
         string _msg = _packet.ReadString();
-        GameUIManager.instance.UpdateNameList(_msg);
+        var names = _msg.Split("\n");
+        GameUIManager.instance.UpdateNameText(names[0], names[1]);
     }
 
     public static void Welcome(Packet _packet)
@@ -51,6 +52,7 @@ public class ClientHandle : MonoBehaviour
             case (0):
                 //reset board
                 TileManager.ResetBoard();
+                
                 break;
             case (1):
                 if(int.Parse(message[1]) == Client.instance.myId)
@@ -65,6 +67,9 @@ public class ClientHandle : MonoBehaviour
 
                 }
                 GameUIManager.instance.UpdateTurn();
+                break;
+            case (2):
+                GameUIManager.instance.ShowGameOver();
                 break;
         }
 

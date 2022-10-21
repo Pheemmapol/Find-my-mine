@@ -31,7 +31,7 @@ public class UIManager : MonoBehaviour
         usernameField.interactable = false;
         Client.instance.ConnectToServer();
         Debug.Log("Changing scene");
-        ChangeScene(0);
+        ChangeScene(1);
     }
     public void ChangeScene(int scene)
     {
