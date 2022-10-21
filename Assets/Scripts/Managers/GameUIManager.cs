@@ -7,8 +7,8 @@ public class GameUIManager : MonoBehaviour
 {
     public static GameUIManager instance;
     public TextMeshProUGUI NameList;
-    public TextMeshProUGUI Name;
     public TextMeshProUGUI Score;
+    public TextMeshProUGUI Turn;
 
     private void Awake()
     {
@@ -33,8 +33,8 @@ public class GameUIManager : MonoBehaviour
     {
         Score.text = score.ToString();
     }
-    public void UpdateName(string name)
+    public void UpdateTurn()
     {
-        Name.text = name;
+        Score.text = GameManager.Instance.State == GameManager.GameState.PlayerTurn ? "Your turn" : "Enemy's Turn";
     }
 }

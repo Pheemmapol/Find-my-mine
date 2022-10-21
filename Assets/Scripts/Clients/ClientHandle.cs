@@ -62,7 +62,9 @@ public class ClientHandle : MonoBehaviour
                 {
                     //Enemy Turn
                     GameManager.Instance.ChangeState(GameManager.GameState.EnemyTurn);
+
                 }
+                GameUIManager.instance.UpdateTurn();
                 break;
         }
 
