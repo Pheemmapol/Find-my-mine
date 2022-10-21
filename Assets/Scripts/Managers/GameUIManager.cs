@@ -35,6 +35,6 @@ public class GameUIManager : MonoBehaviour
     }
     public void UpdateTurn()
     {
-        Score.text = GameManager.Instance.State == GameManager.GameState.PlayerTurn ? "Your turn" : "Enemy's Turn";
+        Turn.text = GameManager.Instance.State == GameManager.GameState.PlayerTurn ? "Your turn" : "Enemy's Turn";
     }
 }
