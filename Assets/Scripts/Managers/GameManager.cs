@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
-                    SendMessageToChat(Username +" : "+ chatBox.text, Message.MessageType.playerMessage);
+                    SendMessageToChat(Username +": "+ chatBox.text, Message.MessageType.playerMessage);
                     chatBox.text = "";
                 }
             }
