@@ -12,6 +12,8 @@ public class UIManager : MonoBehaviour
     public GameObject startMenu;
     public TMP_InputField usernameField;
 
+    public GameObject lobbyMenu;
+
     private void Awake()
     {
         if (instance == null)
@@ -27,14 +29,30 @@ public class UIManager : MonoBehaviour
 
     public void ConnectToServer()
     {
-        startMenu.SetActive(false);
         usernameField.interactable = false;
+        Client.instance.name = usernameField.text;
         Client.instance.ConnectToServer();
-        Debug.Log("Changing scene");
+    }
+    public void ChangeToLobbyUI()
+    {
+        startMenu.SetActive(false);
+        lobbyMenu.SetActive(true);
+    }
+    public void CreateLobby()
+    {
+        ClientSend.JoinLobby(true,0);
         ChangeScene(1);
     }
+
+    public void JoinLobby()
+    {
+        ClientSend.JoinLobby(false, 0);
+        ChangeScene(1);
+    }
+
     public void ChangeScene(int scene)
     {
+        Debug.Log("Changing scene");
         SceneManager.LoadScene(scene);
     }
 }

@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     List<Message> messageList = new List<Message>();
 
     public static GameManager Instance;
-    public GameState State;
+    public GameState State = GameState.Waiting;
     public string Username;
     void Awake()
     {
@@ -59,6 +59,11 @@ public class GameManager : MonoBehaviour
     }
     public void ChangeState(GameState newstate)
     {
+        if(State == GameState.Waiting && newstate != GameState.Waiting)
+        {
+            GameUIManager.instance.HideWaitingScreen();
+        }
+
         State = newstate;
         switch (newstate) { 
             case (GameState.Waiting):
@@ -66,6 +71,8 @@ public class GameManager : MonoBehaviour
             case (GameState.PlayerTurn):
                 break;
             case (GameState.EnemyTurn):
+                break;
+            case (GameState.GameOver):
                 break;
             }
 
@@ -75,6 +82,7 @@ public class GameManager : MonoBehaviour
         Waiting = 0,
         PlayerTurn = 1,
         EnemyTurn = 2,
+        GameOver= 3
     }
 
     public void SendMessageToChat(string text, Message.MessageType messageType)

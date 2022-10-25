@@ -21,7 +21,7 @@ public class TileManager : MonoBehaviour
     void Start()
     {
         generateGrid();
-        GameUIManager.instance.UpdateScore(0);
+        GameUIManager.instance.UpdateScore("0","0");
     }
      
     void generateGrid()

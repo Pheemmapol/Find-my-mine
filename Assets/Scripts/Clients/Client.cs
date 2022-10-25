@@ -9,9 +9,10 @@ public class Client : MonoBehaviour
 {
     public static Client instance;
     public static int dataBufferSize = 4096;
-    public string ip = "192.168.43.156";
+    public string ip = "192.168.183.156";
     public int port = 26950;
     public int myId = 0;
+    public string name = "";
     public TCP tcp;
 
     private delegate void PacketHandler(Packet _packet);
@@ -169,11 +170,11 @@ public class Client : MonoBehaviour
     {
         packetHandlers = new Dictionary<int, PacketHandler>()
         {
-            { (int)ServerPackets.name, ClientHandle.UpdateName },
             { (int)ServerPackets.welcome, ClientHandle.Welcome },
             { (int)ServerPackets.clickpos, ClientHandle.GetClickPos},
             {(int)ServerPackets.genericinfo, ClientHandle.GetGenericInfo },
-            {(int) ServerPackets.state, ClientHandle.GetState }
+            {(int) ServerPackets.state, ClientHandle.GetState },
+            {(int) ServerPackets.lobby, null }
         };
         Debug.Log("Initialized packets.");
     }

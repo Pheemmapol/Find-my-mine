@@ -30,6 +30,7 @@ public class Tiles : MonoBehaviour
     public void SetToPressedcolor()
     {
         _renderer.color = _pressedTileColor;
+        hasPressed = true;
     }
 
 
@@ -55,6 +56,7 @@ public class Tiles : MonoBehaviour
 
     public void revealTile(bool isBOMB)
     {
+
         SetToPressedcolor();
         if (isBOMB)
         {

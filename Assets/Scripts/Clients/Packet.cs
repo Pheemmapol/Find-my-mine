@@ -4,21 +4,22 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 
-/// <summary>Sent from server to client.</summary>
-public enum ServerPackets
+    /// <summary>Sent from server to client.</summary>
+    public enum ServerPackets
 {
-    name = 0,
     welcome = 1,
     clickpos = 2,
     genericinfo = 3,
-    state = 4
+    state = 4,
+    lobby = 5
 }
 
 /// <summary>Sent from client to server.</summary>
 public enum ClientPackets
 {
     welcomeReceived = 1,
-    clickpos = 2
+    clickpos = 2,
+    lobby = 3
 }
 
 public class Packet : IDisposable
