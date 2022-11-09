@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class GameUIManager : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class GameUIManager : MonoBehaviour
     public GameObject WaitingScreen;
     public TextMeshProUGUI playerWaitText;
 
+
     private void Awake()
     {
 
@@ -28,6 +30,11 @@ public class GameUIManager : MonoBehaviour
             Debug.Log("Instance already exists, destroying object!");
             Destroy(this);
         }
+
+    }
+
+    private void RestartGame()
+    {
 
     }
 
@@ -68,6 +75,7 @@ public class GameUIManager : MonoBehaviour
         }
         Turn.text = text;
     }
+
     public void UpdateWaitingScreen()
     {
         if (GameManager.Instance.State == GameManager.GameState.Waiting)

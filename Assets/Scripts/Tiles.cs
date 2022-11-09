@@ -7,7 +7,7 @@ public class Tiles : MonoBehaviour
     [SerializeField] private GameObject _highlight;
     [SerializeField] private SpriteRenderer _renderer;
     private Color _normalTileColor,_pressedTileColor;
-    private bool hasPressed;
+    private bool hasPressed = false;
     private bool hasFlagged;
     private Vector2 position;
 

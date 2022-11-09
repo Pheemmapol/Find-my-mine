@@ -19,7 +19,9 @@ public enum ClientPackets
 {
     welcomeReceived = 1,
     clickpos = 2,
-    lobby = 3
+    lobby = 3,
+    state = 4,
+    chat = 5
 }
 
 public class Packet : IDisposable
@@ -333,7 +335,7 @@ public class Packet : IDisposable
         {
             throw new Exception("Could not read value of type 'string'!");
         }
-    }
+    } 
     #endregion
 
     private bool disposed = false;

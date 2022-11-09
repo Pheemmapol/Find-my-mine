@@ -10,11 +10,14 @@ public class GameManager : MonoBehaviour
 {
     
     public int maxMessages = 25;
-
+    public float timer = 10.0f;
     public GameObject chatPanel, textObject;
     public TMP_InputField chatBox;
+    public ScrollRect scrollRect;
 
     public Color playerMessage, info;
+
+    public TextMeshProUGUI TimerText;
 
     [SerializeField]
     List<Message> messageList = new List<Message>();
@@ -30,6 +33,7 @@ public class GameManager : MonoBehaviour
     {
         ChangeState(GameState.Waiting);
     }
+
 
     private void Update()
     {
@@ -49,11 +53,16 @@ public class GameManager : MonoBehaviour
                     chatBox.ActivateInputField();
             }
 
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                SendMessageToChat("You pressed the space key!", Message.MessageType.info);
-                Debug.Log("Space");
-            }
+        }
+        if (Instance.State == GameState.PlayerTurn)
+        {
+            UpdateTime();
+        }
+        if(timer < 0)
+        {
+            Debug.Log("Out of time");
+            ClientSend.SendClickPos(-1, -1);
+            ChangeState(GameState.EnemyTurn);
         }
         
     }
@@ -69,14 +78,30 @@ public class GameManager : MonoBehaviour
             case (GameState.Waiting):
                 break;
             case (GameState.PlayerTurn):
+                ResetTime();
                 break;
             case (GameState.EnemyTurn):
+                ResetTime();
                 break;
             case (GameState.GameOver):
                 break;
             }
 
     }
+
+
+    public void UpdateTime()
+    {
+        timer -= Time.deltaTime;
+        TimerText.text = (Mathf.Round(timer * 100f) / 100f).ToString();
+    }
+
+    public void ResetTime()
+    {
+        timer = 10.0f;
+        TimerText.text = timer.ToString();
+    }
+
     public enum GameState
     {
         Waiting = 0,
@@ -105,6 +130,8 @@ public class GameManager : MonoBehaviour
         newMessage.textObject.color = MessageTypeColor(messageType);
 
         messageList.Add(newMessage);
+
+        scrollRect.normalizedPosition = new Vector2(0, 0);
     }
 
     Color MessageTypeColor(Message.MessageType messageType)

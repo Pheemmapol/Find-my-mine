@@ -41,5 +41,26 @@ public class ClientSend : MonoBehaviour
             SendTCPData(_packet);
         }
     }
+
+    public static void SendState(int state)
+    {
+        using (Packet _packet = new Packet((int)ClientPackets.lobby))
+        {
+            _packet.Write(state);
+
+            SendTCPData(_packet);
+        }
+    }
+
+    public static void SendChat(string message)
+    {
+        using (Packet _packet = new Packet((int)ClientPackets.chat))
+        {
+            _packet.Write(message);
+
+            SendTCPData(_packet);
+        }
+
+    }
     #endregion
 }

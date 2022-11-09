@@ -20,6 +20,9 @@ public class ClientHandle : MonoBehaviour
     {
         string _msg = _packet.ReadString();
         string[] pos =  _msg.Split(',');
+        int x = int.Parse(pos[0]);
+        int y = int.Parse(pos[1]);
+        if (x == -1 && y == -1) return;
         TileManager.RevealTile(new Vector2(int.Parse(pos[0]), int.Parse(pos[1])), int.Parse(pos[2]) == 1 ? true:false);
         Debug.Log($"Message from server: {_msg}");
 

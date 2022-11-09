@@ -13,6 +13,8 @@ public class UIManager : MonoBehaviour
     public TMP_InputField usernameField;
 
     public GameObject lobbyMenu;
+    public GameObject TutorialPanel;
+    public bool ShowedTutorial = false;
 
     private void Awake()
     {
@@ -25,6 +27,12 @@ public class UIManager : MonoBehaviour
             Debug.Log("Instance already exists, destroying object!");
             Destroy(this);
         }
+    }
+
+    public void ToggleTutorial()
+    {
+        ShowedTutorial = !ShowedTutorial;
+        TutorialPanel.SetActive(ShowedTutorial);
     }
 
     public void ConnectToServer()
