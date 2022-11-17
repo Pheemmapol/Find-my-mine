@@ -16,6 +16,7 @@ public class ClientHandle : MonoBehaviour
         ClientSend.WelcomeReceived();
     }
 
+    //get click info data [posx,poy,isbomb] should be [posx,poy,tiletype,surroundingBomb]
     public static void GetClickPos(Packet _packet)
     {
         string _msg = _packet.ReadString();
@@ -28,6 +29,7 @@ public class ClientHandle : MonoBehaviour
 
     }
 
+    //get info data [name1,score1,name2,score2]
     public static void GetGenericInfo(Packet _packet)
     {
         string _msg = _packet.ReadString();
@@ -38,6 +40,15 @@ public class ClientHandle : MonoBehaviour
         }
         Debug.Log($"Message from server: {_msg}");
     }
+
+
+    /* Get state
+     *  0 -> reset board    data [0]
+     *  1 -> Change turn    data [1,turns]
+     *  2 -> Waiting        data [2]
+     *  3 -> Game over      data [3,winner]
+     *  4 -> Into game scene data [4,width,height]
+     */ 
 
     public static void GetState(Packet _packet)
     {
@@ -72,6 +83,11 @@ public class ClientHandle : MonoBehaviour
                 GameManager.Instance.ChangeState(GameManager.GameState.GameOver);
                 GameUIManager.instance.UpdateTurn();
                 GameUIManager.instance.ShowGameOver(message[1]);
+                break;
+            case (4):
+                //put to game scene
+                UIManager.instance.ChangeScene(1);
+                TileManager.instance.StartGame(int.Parse(message[1]), int.Parse(message[2]));
                 break;
         }
 

@@ -132,6 +132,8 @@ public class GameManager : MonoBehaviour
         messageList.Add(newMessage);
 
         scrollRect.normalizedPosition = new Vector2(0, 0);
+
+        ClientSend.SendChat(text);
     }
 
     Color MessageTypeColor(Message.MessageType messageType)

@@ -48,14 +48,15 @@ public class UIManager : MonoBehaviour
     }
     public void CreateLobby()
     {
-        ClientSend.JoinLobby(true,0);
-        ChangeScene(1);
+        //TO DO customize width and height
+        //ClientSend.CreateLobby(1, 0,width,height,bombcount,supermine,gamemode);
+
+        ClientSend.CreateLobby(1,0);
     }
 
     public void JoinLobby()
     {
-        ClientSend.JoinLobby(false, 0);
-        ChangeScene(1);
+        ClientSend.JoinLobby(0, 0);
     }
 
     public void ChangeScene(int scene)

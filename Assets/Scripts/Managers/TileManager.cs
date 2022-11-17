@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TileManager : MonoBehaviour
 {
+    public static TileManager instance;
     [SerializeField] private Tiles _tilePrefab;
     [SerializeField] private Board _boardPrefab;
     [SerializeField] private Color _normalColor, _pressedColor,_boardColor;
@@ -17,11 +18,21 @@ public class TileManager : MonoBehaviour
     public static Dictionary<Vector2, Tiles> _tiles;
 
 
-
-    void Start()
+    private void Awake()
     {
+        instance = this;
+    }
+    public void StartGame(int width, int height)
+    {
+        setBoardSize(width, height);
         generateGrid();
-        GameUIManager.instance.UpdateScore("0","0");
+        GameUIManager.instance.UpdateScore("0", "0");
+    }
+
+    public void setBoardSize(int width,int height)
+    {
+        _width = width;
+        _height = height;
     }
      
     void generateGrid()
@@ -68,7 +79,7 @@ public class TileManager : MonoBehaviour
 
     public static Tiles GetTileFromPosition(Vector2 pos)
     {
-        if (TileManager._tiles.TryGetValue(pos, out var tile)) return tile;
+        if (_tiles.TryGetValue(pos, out var tile)) return tile;
         return null;
     }
 

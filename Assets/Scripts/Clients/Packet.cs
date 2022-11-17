@@ -21,7 +21,8 @@ public enum ClientPackets
     clickpos = 2,
     lobby = 3,
     state = 4,
-    chat = 5
+    boardinfo = 5,
+    chat = 6
 }
 
 public class Packet : IDisposable

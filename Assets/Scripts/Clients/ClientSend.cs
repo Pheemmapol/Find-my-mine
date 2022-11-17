@@ -32,7 +32,8 @@ public class ClientSend : MonoBehaviour
         }
     }
 
-    public static void JoinLobby(bool create, int lobbyid)
+    // 
+    public static void JoinLobby(int create, int lobbyid)
     {
         using (Packet _packet = new Packet((int)ClientPackets.lobby))
         {
@@ -42,9 +43,18 @@ public class ClientSend : MonoBehaviour
         }
     }
 
-    public static void SendState(int state)
+    public static void CreateLobby(int create, int lobbyid,int width,int height,int bombcount, int supermmine,int gamemode)
     {
         using (Packet _packet = new Packet((int)ClientPackets.lobby))
+        {
+            _packet.Write(create);
+
+            SendTCPData(_packet);
+        }
+    }
+    public static void SendState(int state)
+    {
+        using (Packet _packet = new Packet((int)ClientPackets.state))
         {
             _packet.Write(state);
 
