@@ -17,10 +17,15 @@ public class TileManager : MonoBehaviour
 
     public static Dictionary<Vector2, Tiles> _tiles;
 
+    private void Start()
+    {
+        StartGame(ClientHandle.boardInfo.width, ClientHandle.boardInfo.height);
+    }
 
     private void Awake()
     {
         instance = this;
+        DontDestroyOnLoad(this);
     }
     public void StartGame(int width, int height)
     {

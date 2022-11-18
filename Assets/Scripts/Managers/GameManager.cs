@@ -43,7 +43,9 @@ public class GameManager : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
-                    SendMessageToChat(Username +": "+ chatBox.text, Message.MessageType.playerMessage);
+                    var text = Username + ": " + chatBox.text;
+                    SendMessageToChat(text, Message.MessageType.playerMessage);
+                    ClientSend.SendChat(text);
                     chatBox.text = "";
                 }
             }
@@ -133,7 +135,7 @@ public class GameManager : MonoBehaviour
 
         scrollRect.normalizedPosition = new Vector2(0, 0);
 
-        ClientSend.SendChat(text);
+
     }
 
     Color MessageTypeColor(Message.MessageType messageType)

@@ -2426,7 +2426,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1247209969
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3796,7 +3796,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1844122042
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4690,6 +4690,7 @@ MonoBehaviour:
   startMenu: {fileID: 1247209968}
   usernameField: {fileID: 1462299562}
   lobbyMenu: {fileID: 1228958562}
+  createlobbymenu: {fileID: 1844122041}
   TutorialPanel: {fileID: 1438360523}
   ShowedTutorial: 0
 --- !u!1 &2090634201

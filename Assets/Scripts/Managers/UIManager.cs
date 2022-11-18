@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     public TMP_InputField usernameField;
 
     public GameObject lobbyMenu;
+    public GameObject createlobbymenu;
     public GameObject TutorialPanel;
     public bool ShowedTutorial = false;
 
@@ -45,6 +46,14 @@ public class UIManager : MonoBehaviour
     {
         startMenu.SetActive(false);
         lobbyMenu.SetActive(true);
+        createlobbymenu.SetActive(false);
+    }
+
+    public void ChangeToCreateLobby()
+    {
+        startMenu.SetActive(false);
+        lobbyMenu.SetActive(false);
+        createlobbymenu.SetActive(true);
     }
     public void CreateLobby()
     {

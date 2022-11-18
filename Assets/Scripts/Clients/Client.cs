@@ -17,7 +17,7 @@ public class Client : MonoBehaviour
 
     private delegate void PacketHandler(Packet _packet);
     private static Dictionary<int, PacketHandler> packetHandlers;
-
+    
     private void Awake()
     {
         
@@ -174,8 +174,26 @@ public class Client : MonoBehaviour
             { (int)ServerPackets.clickpos, ClientHandle.GetClickPos},
             {(int)ServerPackets.genericinfo, ClientHandle.GetGenericInfo },
             {(int) ServerPackets.state, ClientHandle.GetState },
-            {(int) ServerPackets.lobby, null }
+            {(int) ServerPackets.lobby, null },
+            {(int) ServerPackets.chat, ClientHandle.GetChat }
         };
         Debug.Log("Initialized packets.");
+    }
+
+    public class BoardInfo
+    {
+        public int width;
+        public int height;
+
+        public BoardInfo()
+        {
+            width = 6;
+            height = 6;
+        }
+        public BoardInfo(int width, int height, int bomb)
+        {
+            this.width = width;
+            this.height = height;
+        }
     }
 }

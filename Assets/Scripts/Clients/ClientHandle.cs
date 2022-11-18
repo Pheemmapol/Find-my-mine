@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ClientHandle : MonoBehaviour
 {
-
+    public static Client.BoardInfo boardInfo;
     public static void Welcome(Packet _packet)
     {
         string _msg = _packet.ReadString();
@@ -48,7 +48,7 @@ public class ClientHandle : MonoBehaviour
      *  2 -> Waiting        data [2]
      *  3 -> Game over      data [3,winner]
      *  4 -> Into game scene data [4,width,height]
-     */ 
+     */
 
     public static void GetState(Packet _packet)
     {
@@ -62,7 +62,7 @@ public class ClientHandle : MonoBehaviour
                 TileManager.ResetBoard();
                 break;
             case (1):
-                if(int.Parse(message[1]) == Client.instance.myId)
+                if (int.Parse(message[1]) == Client.instance.myId)
                 {
                     //My turn
                     GameManager.Instance.ChangeState(GameManager.GameState.PlayerTurn);
@@ -87,9 +87,13 @@ public class ClientHandle : MonoBehaviour
             case (4):
                 //put to game scene
                 UIManager.instance.ChangeScene(1);
-                TileManager.instance.StartGame(int.Parse(message[1]), int.Parse(message[2]));
+                boardInfo = new Client.BoardInfo(int.Parse(message[1]), int.Parse(message[2]), 11);
                 break;
         }
-
     }
+        public static void GetChat(Packet _packet)
+        {
+            string _msg = _packet.ReadString();
+        GameManager.Instance.SendMessageToChat(_msg,Message.MessageType.playerMessage);
+        }
 }

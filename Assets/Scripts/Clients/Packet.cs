@@ -11,7 +11,8 @@ using UnityEngine;
     clickpos = 2,
     genericinfo = 3,
     state = 4,
-    lobby = 5
+    lobby = 5,
+    chat = 6
 }
 
 /// <summary>Sent from client to server.</summary>
@@ -21,8 +22,7 @@ public enum ClientPackets
     clickpos = 2,
     lobby = 3,
     state = 4,
-    boardinfo = 5,
-    chat = 6
+    chat = 5
 }
 
 public class Packet : IDisposable

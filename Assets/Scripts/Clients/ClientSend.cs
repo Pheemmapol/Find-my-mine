@@ -37,17 +37,17 @@ public class ClientSend : MonoBehaviour
     {
         using (Packet _packet = new Packet((int)ClientPackets.lobby))
         {
-            _packet.Write(create);
+            _packet.Write($"{create},{lobbyid}");
 
             SendTCPData(_packet);
         }
     }
 
-    public static void CreateLobby(int create, int lobbyid,int width,int height,int bombcount, int supermmine,int gamemode)
+    public static void CreateLobby(int create, int lobbyid,int width = 6,int height = 6,int bombcount = 11, int supermine = 0,int gamemode = 0)
     {
         using (Packet _packet = new Packet((int)ClientPackets.lobby))
         {
-            _packet.Write(create);
+            _packet.Write($"{create},{lobbyid},{width},{height},{bombcount},{supermine},{gamemode}");
 
             SendTCPData(_packet);
         }
