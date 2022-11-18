@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ClientHandle : MonoBehaviour
 {
-    public static Client.BoardInfo boardInfo;
     public static void Welcome(Packet _packet)
     {
         string _msg = _packet.ReadString();
@@ -86,8 +85,9 @@ public class ClientHandle : MonoBehaviour
                 break;
             case (4):
                 //put to game scene
+                Client.setBoardInfo(int.Parse(message[1]), int.Parse(message[2]),11,0,"Normal");
                 UIManager.instance.ChangeScene(1);
-                boardInfo = new Client.BoardInfo(int.Parse(message[1]), int.Parse(message[2]), 11);
+
                 break;
         }
     }
@@ -96,4 +96,5 @@ public class ClientHandle : MonoBehaviour
             string _msg = _packet.ReadString();
         GameManager.Instance.SendMessageToChat(_msg,Message.MessageType.playerMessage);
         }
+
 }

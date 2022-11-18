@@ -12,9 +12,9 @@ public class Client : MonoBehaviour
     public string ip = "192.168.75.156";
     public int port = 26950;
     public int myId = 0;
-    public string name = "";
+    public static string username = "";
     public TCP tcp;
-
+    public static BoardInfo boardinfo;
     private delegate void PacketHandler(Packet _packet);
     private static Dictionary<int, PacketHandler> packetHandlers;
     
@@ -184,16 +184,46 @@ public class Client : MonoBehaviour
     {
         public int width;
         public int height;
-
+        public int bomb;
+        public int superbomb;
+        public int gamemode;
         public BoardInfo()
         {
             width = 6;
             height = 6;
         }
-        public BoardInfo(int width, int height, int bomb)
+        public BoardInfo(int width, int height)
         {
             this.width = width;
             this.height = height;
         }
+        public BoardInfo(int width, int height, int bomb, int superbomb, int gamemode) : this(width, height)
+        {
+            this.bomb = bomb;
+            this.superbomb = superbomb;
+            this.gamemode = gamemode;
+        }
     }
+
+    //gamemode 1-normal 2-minesweeper 3-reverse 4-battleship
+    public static void setBoardInfo(int width, int height, int bomb, int superbomb, string gamemode)
+    {
+        int gamemodeint = 0;
+        switch (gamemode)
+        {
+            case "Normal":
+                break;
+            case "Mine Sweeper":
+                gamemodeint = 1;
+                break;
+            case "Reversed":
+                gamemodeint = 2;
+                break;
+            case "Battleship":
+                gamemodeint = 3;
+                break;
+        }
+        boardinfo = new BoardInfo(width, height, bomb, superbomb, gamemodeint);
+    }
+
 }

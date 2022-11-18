@@ -24,7 +24,6 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance;
     public GameState State = GameState.Waiting;
-    public string Username;
     void Awake()
     {
         Instance = this;
@@ -43,7 +42,7 @@ public class GameManager : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
-                    var text = Username + ": " + chatBox.text;
+                    var text = Client.username + ": " + chatBox.text;
                     SendMessageToChat(text, Message.MessageType.playerMessage);
                     ClientSend.SendChat(text);
                     chatBox.text = "";

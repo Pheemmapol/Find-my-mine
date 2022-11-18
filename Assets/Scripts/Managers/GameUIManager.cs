@@ -81,7 +81,7 @@ public class GameUIManager : MonoBehaviour
         if (GameManager.Instance.State == GameManager.GameState.Waiting)
         {
             WaitingScreen.SetActive(true);
-            playerWaitText.text = $"Hello {Client.instance.name}! Welcome to the game.";
+            playerWaitText.text = $"Hello {Client.username}! Welcome to the game.";
         }
     }
     public void HideWaitingScreen()

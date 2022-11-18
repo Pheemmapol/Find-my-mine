@@ -19,13 +19,12 @@ public class TileManager : MonoBehaviour
 
     private void Start()
     {
-        StartGame(ClientHandle.boardInfo.width, ClientHandle.boardInfo.height);
+        StartGame(Client.boardinfo.width, Client.boardinfo.height);
     }
 
     private void Awake()
     {
         instance = this;
-        DontDestroyOnLoad(this);
     }
     public void StartGame(int width, int height)
     {
@@ -38,6 +37,7 @@ public class TileManager : MonoBehaviour
     {
         _width = width;
         _height = height;
+        _scale = 7.2f / width;
     }
      
     void generateGrid()
@@ -75,6 +75,7 @@ public class TileManager : MonoBehaviour
         {
             tile.UnrevealTile();
         }
+        GameUIManager.instance.HideGameOver();
     }
 
     public static void RevealTile(Vector2 pos,bool isBomb)
