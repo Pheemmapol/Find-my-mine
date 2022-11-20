@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Globalization;
 
 public class UIManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class UIManager : MonoBehaviour
 
     public GameObject startMenu;
     public TMP_InputField usernameField;
+    public TMP_InputField lobbyidField;
     public TMP_Dropdown gameMode;
     public TMP_Dropdown bomb;
     public TMP_Dropdown superbomb;
@@ -19,6 +21,8 @@ public class UIManager : MonoBehaviour
     public GameObject lobbyMenu;
     public GameObject createlobbymenu;
     public GameObject TutorialPanel;
+    public TextMeshProUGUI lobbyidText;
+    public TextMeshProUGUI errorText;
     public bool ShowedTutorial = false;
     
     private void Awake()
@@ -58,6 +62,8 @@ public class UIManager : MonoBehaviour
         startMenu.SetActive(false);
         lobbyMenu.SetActive(false);
         createlobbymenu.SetActive(true);
+        int lobbyid = Random.Range(1000, 9999);
+        lobbyidText.text = lobbyid.ToString();
     }
 
     public void CreateLobby()
@@ -65,12 +71,17 @@ public class UIManager : MonoBehaviour
         //TO DO customize width and height
         //ClientSend.CreateLobby(1, 0,width,height,bombcount,supermine,gamemode);
         UpdateBoardInfo();
-        ClientSend.CreateLobby(1,0);
+        ClientSend.CreateLobby(1,int.Parse(lobbyidText.text),Client.boardinfo.width,Client.boardinfo.height
+                                ,Client.boardinfo.bomb, Client.boardinfo.superbomb, Client.boardinfo.gamemode);
+        Debug.Log(int.Parse(lobbyidText.text));
     }
 
     public void JoinLobby()
     {
-        ClientSend.JoinLobby(0, 0);
+        if (lobbyidField.text != "")
+        {
+            ClientSend.JoinLobby(0, int.Parse(lobbyidField.text));
+        }
     }
 
     public void ChangeScene(int scene)
@@ -86,7 +97,13 @@ public class UIManager : MonoBehaviour
                                 , int.Parse(boardsize.captionText.text)
                                 , int.Parse(bomb.captionText.text)
                                 , int.Parse(superbomb.captionText.text)
-                                , gameMode.captionText.text);
+                                , gameMode.captionText.text
+                                ,int.Parse(lobbyidText.text));
     }
 
+    public void ShowError(string error)
+    {
+        errorText.text = error;
+        errorText.gameObject.SetActive(true);
+    }
 }

@@ -66,7 +66,7 @@ public class TileManager : MonoBehaviour
                 }
             }
 
-         _cam.transform.position = new Vector3((float)_height / 2 - 0.5f, (float)_width / 2 - 0.5f, -10);
+         _cam.transform.position = new Vector3((float)6 / 2 - 0.5f, (float)6 / 2 - 0.5f, -10);
     }
 
     public static void ResetBoard()
@@ -78,9 +78,9 @@ public class TileManager : MonoBehaviour
         GameUIManager.instance.HideGameOver();
     }
 
-    public static void RevealTile(Vector2 pos,bool isBomb)
+    public static void RevealTile(Vector2 pos,int tiletype)
     {
-        GetTileFromPosition(pos).revealTile(isBomb);
+        GetTileFromPosition(pos).revealTile(tiletype);
     }
 
     public static Tiles GetTileFromPosition(Vector2 pos)

@@ -15,6 +15,20 @@ public class ClientHandle : MonoBehaviour
         ClientSend.WelcomeReceived();
     }
 
+    public static void ErrorMesssage(Packet _packet)
+    {
+        int _error = _packet.ReadInt();
+        switch (_error)
+        {
+            case 0:
+                UIManager.instance.ShowError("Lobby not found, please try again.");
+                break;
+            case 1:
+                break;
+        }
+
+    }
+
     //get click info data [posx,poy,isbomb] should be [posx,poy,tiletype,surroundingBomb]
     public static void GetClickPos(Packet _packet)
     {
@@ -23,7 +37,7 @@ public class ClientHandle : MonoBehaviour
         int x = int.Parse(pos[0]);
         int y = int.Parse(pos[1]);
         if (x == -1 && y == -1) return;
-        TileManager.RevealTile(new Vector2(int.Parse(pos[0]), int.Parse(pos[1])), int.Parse(pos[2]) == 1 ? true:false);
+        TileManager.RevealTile(new Vector2(int.Parse(pos[0]), int.Parse(pos[1])), int.Parse(pos[2]));
         Debug.Log($"Message from server: {_msg}");
 
     }
@@ -85,7 +99,10 @@ public class ClientHandle : MonoBehaviour
                 break;
             case (4):
                 //put to game scene
-                Client.setBoardInfo(int.Parse(message[1]), int.Parse(message[2]),11,0,"Normal");
+                // 4,{lobbyid},{width},{height},{mine},{supermine},{(int)gamemode}
+                Client.setBoardInfo(int.Parse(message[2]), int.Parse(message[3]), 
+                                    int.Parse(message[4]), int.Parse(message[5]), 
+                                    message[6], int.Parse(message[1]));
                 UIManager.instance.ChangeScene(1);
 
                 break;

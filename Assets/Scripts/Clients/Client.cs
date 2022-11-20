@@ -170,6 +170,7 @@ public class Client : MonoBehaviour
     {
         packetHandlers = new Dictionary<int, PacketHandler>()
         {
+            { (int)ServerPackets.error, ClientHandle.ErrorMesssage },
             { (int)ServerPackets.welcome, ClientHandle.Welcome },
             { (int)ServerPackets.clickpos, ClientHandle.GetClickPos},
             {(int)ServerPackets.genericinfo, ClientHandle.GetGenericInfo },
@@ -187,6 +188,7 @@ public class Client : MonoBehaviour
         public int bomb;
         public int superbomb;
         public int gamemode;
+        public int lobbyid;
         public BoardInfo()
         {
             width = 6;
@@ -197,16 +199,17 @@ public class Client : MonoBehaviour
             this.width = width;
             this.height = height;
         }
-        public BoardInfo(int width, int height, int bomb, int superbomb, int gamemode) : this(width, height)
+        public BoardInfo(int width, int height, int bomb, int superbomb, int gamemode, int lobbyid) : this(width, height)
         {
             this.bomb = bomb;
             this.superbomb = superbomb;
             this.gamemode = gamemode;
+            this.lobbyid = lobbyid;
         }
     }
 
     //gamemode 1-normal 2-minesweeper 3-reverse 4-battleship
-    public static void setBoardInfo(int width, int height, int bomb, int superbomb, string gamemode)
+    public static void setBoardInfo(int width, int height, int bomb, int superbomb, string gamemode,int lobbyid)
     {
         int gamemodeint = 0;
         switch (gamemode)
@@ -223,7 +226,7 @@ public class Client : MonoBehaviour
                 gamemodeint = 3;
                 break;
         }
-        boardinfo = new BoardInfo(width, height, bomb, superbomb, gamemodeint);
+        boardinfo = new BoardInfo(width, height, bomb, superbomb, gamemodeint,lobbyid);
     }
 
 }

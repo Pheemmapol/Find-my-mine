@@ -11,14 +11,34 @@ public class Tiles : MonoBehaviour
     private bool hasFlagged;
     private Vector2 position;
 
+    private Dictionary<int, GameObject> numberSprites;
     [SerializeField] private GameObject _bomb;
+    [SerializeField] private GameObject _superbomb;
 
+    [SerializeField] private GameObject _one;
+    [SerializeField] private GameObject _two;
+    [SerializeField] private GameObject _three;
+    [SerializeField] private GameObject _four;
+    [SerializeField] private GameObject _five;
+    [SerializeField] private GameObject _six;
+    [SerializeField] private GameObject _seven;
+    [SerializeField] private GameObject _eight;
 
     public void Init(Color normalcolor,Color pressedcolor, Vector2 pos) { 
         _renderer.color = normalcolor;
         _normalTileColor = normalcolor;
         _pressedTileColor = pressedcolor;
         position = pos;
+        numberSprites = new Dictionary<int, GameObject>(){
+            {1,_one},
+            {2,_two},
+            {3,_three},
+            {4,_four},
+            {5,_five},
+            {6,_six},
+            {7,_seven},
+            {8,_eight}
+        };
 
     }
 
@@ -54,13 +74,18 @@ public class Tiles : MonoBehaviour
         }
     }
 
-    public void revealTile(bool isBOMB)
+    public void revealTile(int tiletype)
     {
 
         SetToPressedcolor();
-        if (isBOMB)
+        switch (tiletype)
         {
-            _bomb.SetActive(true);
+            case 1:
+                showBomb(false);
+                break;
+            case 2:
+                showBomb(true);
+                break;
         }
 
     }
@@ -69,7 +94,7 @@ public class Tiles : MonoBehaviour
     {
         SetToNormalcolor();
         _highlight.SetActive(false);
-        _bomb.SetActive(false);
+        hideAll();
     }
     void OnMouseEnter()
     {
@@ -86,4 +111,30 @@ public class Tiles : MonoBehaviour
         }
     }
 
+    void showBomb(bool superbomb)
+    {
+        if (superbomb)
+        {
+            _superbomb.SetActive(true);
+        }
+        else
+        {
+            _bomb.SetActive(true);
+        }
+    }
+
+    void showNumber(int num)
+    {
+        numberSprites[num].SetActive(true);
+    }
+    
+    void hideAll()
+    {
+        _bomb.SetActive(false);
+        _superbomb.SetActive(false);
+        foreach(GameObject number in numberSprites.Values)
+        {
+            number.SetActive(false);
+        }
+    }
 }

@@ -7,6 +7,7 @@ using UnityEngine;
     /// <summary>Sent from server to client.</summary>
     public enum ServerPackets
 {
+    error = 0,
     welcome = 1,
     clickpos = 2,
     genericinfo = 3,

@@ -16,6 +16,7 @@ public class GameUIManager : MonoBehaviour
     public TextMeshProUGUI Winner;
     public GameObject WaitingScreen;
     public TextMeshProUGUI playerWaitText;
+    public TextMeshProUGUI lobbyID;
 
 
     private void Awake()
@@ -42,6 +43,7 @@ public class GameUIManager : MonoBehaviour
     {
         UpdateWaitingScreen();
         UpdateTurn();
+        lobbyID.text = Client.boardinfo.lobbyid.ToString();
     }
 
     public void UpdateNameText(string name1,string name2)
