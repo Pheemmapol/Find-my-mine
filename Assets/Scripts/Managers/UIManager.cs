@@ -21,10 +21,15 @@ public class UIManager : MonoBehaviour
     public GameObject lobbyMenu;
     public GameObject createlobbymenu;
     public GameObject TutorialPanel;
+    public GameObject SettingPanel;
+    
+
     public TextMeshProUGUI lobbyidText;
     public TextMeshProUGUI errorText;
     public bool ShowedTutorial = false;
+    public bool ShowedSetting = false;
     
+
     private void Awake()
     {
         if (instance == null)
@@ -38,10 +43,20 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    
+
     public void ToggleTutorial()
     {
         ShowedTutorial = !ShowedTutorial;
         TutorialPanel.SetActive(ShowedTutorial);
+
+    }
+
+    public void ToggleSetting()
+    {
+        ShowedSetting = !ShowedSetting;
+        SettingPanel.SetActive(ShowedSetting);
+
     }
 
     public void ConnectToServer()
@@ -71,8 +86,8 @@ public class UIManager : MonoBehaviour
         //TO DO customize width and height
         //ClientSend.CreateLobby(1, 0,width,height,bombcount,supermine,gamemode);
         UpdateBoardInfo();
-        ClientSend.CreateLobby(1,int.Parse(lobbyidText.text),Client.boardinfo.width,Client.boardinfo.height
-                                ,Client.boardinfo.bomb, Client.boardinfo.superbomb, Client.boardinfo.gamemode);
+        ClientSend.CreateLobby(1, int.Parse(lobbyidText.text), Client.boardinfo.width, Client.boardinfo.height
+                                , Client.boardinfo.bomb, Client.boardinfo.superbomb, Client.boardinfo.gamemode);
         Debug.Log(int.Parse(lobbyidText.text));
     }
 
@@ -89,6 +104,9 @@ public class UIManager : MonoBehaviour
         Debug.Log("Changing scene");
         SceneManager.LoadScene(scene);
     }
+
+
+    
 
     //option board setting
     public void UpdateBoardInfo()
