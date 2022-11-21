@@ -83,6 +83,11 @@ public class TileManager : MonoBehaviour
         GetTileFromPosition(pos).revealTile(tiletype);
     }
 
+    public static void RevealTile(Vector2 pos, int tiletype,int bombnum)
+    {
+        GetTileFromPosition(pos).revealTile(tiletype,bombnum);
+    }
+
     public static Tiles GetTileFromPosition(Vector2 pos)
     {
         if (_tiles.TryGetValue(pos, out var tile)) return tile;

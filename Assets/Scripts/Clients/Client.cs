@@ -9,7 +9,7 @@ public class Client : MonoBehaviour
 {
     public static Client instance;
     public static int dataBufferSize = 4096;
-    public string ip = "192.168.75.156";
+    public string ip = "192.168.22.156";
     public int port = 26950;
     public int myId = 0;
     public static string username = "";
@@ -181,6 +181,7 @@ public class Client : MonoBehaviour
         Debug.Log("Initialized packets.");
     }
 
+
     public class BoardInfo
     {
         public int width;
@@ -209,24 +210,9 @@ public class Client : MonoBehaviour
     }
 
     //gamemode 1-normal 2-minesweeper 3-reverse 4-battleship
-    public static void setBoardInfo(int width, int height, int bomb, int superbomb, string gamemode,int lobbyid)
+    public static void setBoardInfo(int width, int height, int bomb, int superbomb, int gamemode,int lobbyid)
     {
-        int gamemodeint = 0;
-        switch (gamemode)
-        {
-            case "Normal":
-                break;
-            case "Mine Sweeper":
-                gamemodeint = 1;
-                break;
-            case "Reversed":
-                gamemodeint = 2;
-                break;
-            case "Battleship":
-                gamemodeint = 3;
-                break;
-        }
-        boardinfo = new BoardInfo(width, height, bomb, superbomb, gamemodeint,lobbyid);
+        boardinfo = new BoardInfo(width, height, bomb, superbomb, gamemode,lobbyid);
     }
 
 }

@@ -90,6 +90,12 @@ public class Tiles : MonoBehaviour
 
     }
 
+    public void revealTile(int tiletype,int num)
+    {
+        revealTile(tiletype);
+        if(tiletype == 0 && num >0)showNumber(num);
+    }
+
     public void UnrevealTile()
     {
         SetToNormalcolor();

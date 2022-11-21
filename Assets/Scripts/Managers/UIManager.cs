@@ -93,11 +93,12 @@ public class UIManager : MonoBehaviour
     //option board setting
     public void UpdateBoardInfo()
     {
+        Debug.Log(gameMode.value);
         Client.setBoardInfo(int.Parse(boardsize.captionText.text)
                                 , int.Parse(boardsize.captionText.text)
                                 , int.Parse(bomb.captionText.text)
                                 , int.Parse(superbomb.captionText.text)
-                                , gameMode.captionText.text
+                                , gameMode.value
                                 ,int.Parse(lobbyidText.text));
     }
 

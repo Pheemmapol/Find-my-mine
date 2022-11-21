@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameUIManager : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class GameUIManager : MonoBehaviour
     public GameObject WaitingScreen;
     public TextMeshProUGUI playerWaitText;
     public TextMeshProUGUI lobbyID;
+    public TextMeshProUGUI gamemodetext;
 
 
     private void Awake()
@@ -36,14 +38,40 @@ public class GameUIManager : MonoBehaviour
 
     private void RestartGame()
     {
-
+        ClientSend.SendState(0);
     }
 
+    private void BackToMenu()
+    {
+        ClientSend.SendState(1);
+        SceneManager.LoadScene(0);
+    }
     private void Start()
     {
         UpdateWaitingScreen();
         UpdateTurn();
         lobbyID.text = Client.boardinfo.lobbyid.ToString();
+        UpdateGameMode();
+    }
+    public void UpdateGameMode()
+    {
+        string text = "";
+        switch (Client.boardinfo.gamemode)
+        {
+            case 0:
+                text = "Normal";
+                break;
+            case 1:
+                text = "Minesweeper";
+                break;
+            case 2:
+                text = "Reversed";
+                break;
+            case 3:
+                text = "Battleship";
+                break;
+        }
+        gamemodetext.text = text;
     }
 
     public void UpdateNameText(string name1,string name2)

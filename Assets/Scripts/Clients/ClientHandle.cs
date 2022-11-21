@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 public class ClientHandle : MonoBehaviour
@@ -37,7 +38,14 @@ public class ClientHandle : MonoBehaviour
         int x = int.Parse(pos[0]);
         int y = int.Parse(pos[1]);
         if (x == -1 && y == -1) return;
-        TileManager.RevealTile(new Vector2(int.Parse(pos[0]), int.Parse(pos[1])), int.Parse(pos[2]));
+        if (pos.Length <= 3)
+        {
+            TileManager.RevealTile(new Vector2(int.Parse(pos[0]), int.Parse(pos[1])), int.Parse(pos[2]));
+        }
+        else
+        {
+            TileManager.RevealTile(new Vector2(int.Parse(pos[0]), int.Parse(pos[1])), int.Parse(pos[2]), int.Parse(pos[3]));
+        }
         Debug.Log($"Message from server: {_msg}");
 
     }
@@ -102,7 +110,7 @@ public class ClientHandle : MonoBehaviour
                 // 4,{lobbyid},{width},{height},{mine},{supermine},{(int)gamemode}
                 Client.setBoardInfo(int.Parse(message[2]), int.Parse(message[3]), 
                                     int.Parse(message[4]), int.Parse(message[5]), 
-                                    message[6], int.Parse(message[1]));
+                                    int.Parse(message[6]), int.Parse(message[1]));
                 UIManager.instance.ChangeScene(1);
 
                 break;

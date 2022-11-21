@@ -7009,7 +7009,7 @@ MonoBehaviour:
     m_Options:
     - m_Text: Normal
       m_Image: {fileID: 0}
-    - m_Text: Mine Sweeper
+    - m_Text: Minesweeper
       m_Image: {fileID: 0}
     - m_Text: Reversed
       m_Image: {fileID: 0}
@@ -7111,7 +7111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bff09310e74970a449b0e8cfcdd1cb3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ip: 192.168.75.156
+  ip: 192.168.22.156
   port: 26950
   myId: 0
 --- !u!4 &1513076500
