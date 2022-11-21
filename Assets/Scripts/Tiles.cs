@@ -10,6 +10,7 @@ public class Tiles : MonoBehaviour
     private bool hasPressed = false;
     private bool hasFlagged;
     private Vector2 position;
+   
 
     private Dictionary<int, GameObject> numberSprites;
     [SerializeField] private GameObject _bomb;
@@ -96,10 +97,10 @@ public class Tiles : MonoBehaviour
             OnLeftClick();
         }
     }
-
+    
     public void revealTile(int tiletype)
     {
-
+        Explode();
         SetToPressedcolor();
         switch (tiletype)
         {
@@ -115,6 +116,7 @@ public class Tiles : MonoBehaviour
 
     public void revealTile(int tiletype,int num)
     {
+        Explode();
         revealTile(tiletype);
         if(tiletype == 0 && num >0)showNumber(num);
     }
@@ -165,5 +167,9 @@ public class Tiles : MonoBehaviour
         {
             number.SetActive(false);
         }
+    }
+    public void Explode()
+    {
+        GameObject newExplosion = Instantiate(TileManager.instance._explosion, _highlight.transform);
     }
 }

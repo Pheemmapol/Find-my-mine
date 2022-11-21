@@ -12,6 +12,8 @@ public class TileManager : MonoBehaviour
     [SerializeField] private float _scale;
     [SerializeField] private Transform _cam;
     [SerializeField] private float _bombcount;
+    public GameObject _explosion;
+    
 
     public Camera mainCamera;
     public Color newColor;
@@ -76,7 +78,7 @@ public class TileManager : MonoBehaviour
                     spawnedTile.name = $"Square {x} {y}";
 
                     spawnedTile.Init(_normalDarkColor,_normalLightColor, _pressedDarkColor, _pressedLightColor, new Vector2(x,y));
-
+                    
                     _tiles[new Vector2(x, y)] = spawnedTile;
                 }
             }
@@ -108,5 +110,6 @@ public class TileManager : MonoBehaviour
         if (_tiles.TryGetValue(pos, out var tile)) return tile;
         return null;
     }
+    
 
 }
