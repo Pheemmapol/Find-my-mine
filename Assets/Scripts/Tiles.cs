@@ -6,7 +6,7 @@ public class Tiles : MonoBehaviour
 {
     [SerializeField] private GameObject _highlight;
     [SerializeField] private SpriteRenderer _renderer;
-    private Color _normalTileColor,_pressedTileColor;
+    private Color _normalDTileColor, _normalLTileColor, _pressedDTileColor, _pressedLTileColor;
     private bool hasPressed = false;
     private bool hasFlagged;
     private Vector2 position;
@@ -23,11 +23,16 @@ public class Tiles : MonoBehaviour
     [SerializeField] private GameObject _six;
     [SerializeField] private GameObject _seven;
     [SerializeField] private GameObject _eight;
+   
 
-    public void Init(Color normalcolor,Color pressedcolor, Vector2 pos) { 
-        _renderer.color = normalcolor;
-        _normalTileColor = normalcolor;
-        _pressedTileColor = pressedcolor;
+    public void Init(Color normalDcolor, Color normalLcolor, Color pressedDcolor, Color pressedLcolor, Vector2 pos) { 
+
+        
+        _normalDTileColor = normalDcolor;
+        _normalLTileColor = normalLcolor;
+        _pressedDTileColor = pressedDcolor;
+        _pressedLTileColor = pressedLcolor;
+        SetToNormalcolor();
         position = pos;
         numberSprites = new Dictionary<int, GameObject>(){
             {1,_one},
@@ -44,12 +49,30 @@ public class Tiles : MonoBehaviour
 
     public void SetToNormalcolor()
     {
-        _renderer.color = _normalTileColor;
+        if (Client.instance.darkmode)
+        {
+            _renderer.color = _normalDTileColor;
+          
+        }
+        else
+        {
+            _renderer.color = _normalLTileColor;
+        }
+        
         hasPressed = false;
     }
     public void SetToPressedcolor()
     {
-        _renderer.color = _pressedTileColor;
+        if (Client.instance.darkmode)
+        {
+            _renderer.color = _pressedDTileColor;
+
+        }
+        else
+        {
+            _renderer.color = _pressedLTileColor;
+        }
+        
         hasPressed = true;
     }
 

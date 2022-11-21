@@ -7,19 +7,21 @@ public class TileManager : MonoBehaviour
     public static TileManager instance;
     [SerializeField] private Tiles _tilePrefab;
     [SerializeField] private Board _boardPrefab;
-    [SerializeField] private Color _normalColor, _pressedColor,_boardColor;
+    [SerializeField] private Color _normalDarkColor, _normalLightColor, _pressedDarkColor, _pressedLightColor, _boardColor;
     [SerializeField] private int _width, _height;
     [SerializeField] private float _scale;
     [SerializeField] private Transform _cam;
     [SerializeField] private float _bombcount;
 
-
+    public Camera mainCamera;
+    public Color newColor;
 
     public static Dictionary<Vector2, Tiles> _tiles;
 
     private void Start()
     {
         StartGame(Client.boardinfo.width, Client.boardinfo.height);
+        setColor();
     }
 
     private void Awake()
@@ -33,6 +35,19 @@ public class TileManager : MonoBehaviour
         GameUIManager.instance.UpdateScore("0", "0");
     }
 
+    public void setColor()
+    {
+        Color darkColor = new Color(0.2f, 0.19f, 0.19f, 0);
+        Color lightColor = new Color(0.68f, 0.67f, 0.67f, 0);
+        if (Client.instance.darkmode)
+        { 
+            mainCamera.backgroundColor = darkColor;
+        }
+        else
+        {
+            mainCamera.backgroundColor = lightColor;
+        }
+    }
     public void setBoardSize(int width,int height)
     {
         _width = width;
@@ -60,7 +75,7 @@ public class TileManager : MonoBehaviour
                     spawnedTile.GetComponent<Renderer>().sortingOrder = 0;
                     spawnedTile.name = $"Square {x} {y}";
 
-                    spawnedTile.Init(_normalColor, _pressedColor,new Vector2(x,y));
+                    spawnedTile.Init(_normalDarkColor,_normalLightColor, _pressedDarkColor, _pressedLightColor, new Vector2(x,y));
 
                     _tiles[new Vector2(x, y)] = spawnedTile;
                 }

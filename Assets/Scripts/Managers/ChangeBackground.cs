@@ -6,6 +6,7 @@ public class ChangeBackground : MonoBehaviour
 {
     public Camera mainCamera;
     public Color newColor;
+    public bool darkmode;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,5 +21,13 @@ public class ChangeBackground : MonoBehaviour
     public void BackgroundChange()
     {
         mainCamera.backgroundColor = newColor;
+        if (darkmode)
+        {
+            Client.instance.darkmode = true;
+        }
+        else
+        {
+            Client.instance.darkmode = false;
+        }
     }
 }
