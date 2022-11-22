@@ -170,6 +170,6 @@ public class Tiles : MonoBehaviour
     }
     public void Explode()
     {
-        GameObject newExplosion = Instantiate(TileManager.instance._explosion, _highlight.transform);
+        GameObject newExplosion = Instantiate(TileManager.instance._explosion, _highlight.transform.position + new Vector3(0,0,1),Quaternion.identity);
     }
 }
