@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb6f4830243454444be83de8dc217817, type: 3}
+  m_Name: New Character Database
+  m_EditorClassIdentifier: 
+  character:
+  - characterName: PepeFrog
+    characterSprite: {fileID: 21300000, guid: 7e72348fa75e342a89a52ce794a00b7a, type: 3}
+  - characterName: SpongeGar
+    characterSprite: {fileID: 21300000, guid: 8c331dfcebcf44075ac723509e344984, type: 3}
+  - characterName: MemeMan
+    characterSprite: {fileID: 21300000, guid: d4237db653df246d09f64220002a14de, type: 3}
+  - characterName: GigaChad
+    characterSprite: {fileID: 21300000, guid: 39376e567521b4b7f915b42483cfaf67, type: 3}
