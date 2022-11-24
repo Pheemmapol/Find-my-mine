@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.TextCore.Text;
 
 public class GameUIManager : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class GameUIManager : MonoBehaviour
     public TextMeshProUGUI lobbyID;
     public TextMeshProUGUI gamemodetext;
 
+    public CharacterDatabase characterDB;
+    public Image artworkSprite;
+    public Image artworkSprite2;
 
     private void Awake()
     {
@@ -52,6 +56,7 @@ public class GameUIManager : MonoBehaviour
         UpdateTurn();
         lobbyID.text = Client.boardinfo.lobbyid.ToString();
         UpdateGameMode();
+        UpdateCharacter(0, 0);
     }
     public void UpdateGameMode()
     {
@@ -67,13 +72,17 @@ public class GameUIManager : MonoBehaviour
             case 2:
                 text = "Reversed";
                 break;
-            case 3:
-                text = "Battleship";
-                break;
         }
         gamemodetext.text = text;
     }
 
+    public void UpdateCharacter(int char1,int char2)
+    {
+        Character character = characterDB.GetCharacter(char1);
+        Character character2 = characterDB.GetCharacter(char2);
+        artworkSprite.sprite = character.characterSprite;
+        artworkSprite2.sprite = character2.characterSprite;
+    }
     public void UpdateNameText(string name1,string name2)
     {
         Name1.text = name1;

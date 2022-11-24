@@ -18,7 +18,7 @@ public class Client : MonoBehaviour
     private delegate void PacketHandler(Packet _packet);
     private static Dictionary<int, PacketHandler> packetHandlers;
     public bool darkmode = false;
-    
+    public int NoChar;
     private void Awake()
     {
         
@@ -191,6 +191,9 @@ public class Client : MonoBehaviour
         public int superbomb;
         public int gamemode;
         public int lobbyid;
+
+        public int char1;
+        public int char2;
         public BoardInfo()
         {
             width = 6;

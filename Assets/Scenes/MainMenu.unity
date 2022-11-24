@@ -5104,7 +5104,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1228958563
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5418,7 +5418,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1247209969
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6734,6 +6734,7 @@ MonoBehaviour:
   port: 26950
   myId: 0
   darkmode: 0
+  NoChar: 0
 --- !u!4 &1513076500
 Transform:
   m_ObjectHideFlags: 0

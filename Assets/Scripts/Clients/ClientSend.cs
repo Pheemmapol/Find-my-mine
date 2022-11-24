@@ -37,7 +37,7 @@ public class ClientSend : MonoBehaviour
     {
         using (Packet _packet = new Packet((int)ClientPackets.lobby))
         {
-            _packet.Write($"{create},{lobbyid}");
+            _packet.Write($"{create},{lobbyid},{Client.instance.NoChar}");
 
             SendTCPData(_packet);
         }
@@ -47,7 +47,7 @@ public class ClientSend : MonoBehaviour
     {
         using (Packet _packet = new Packet((int)ClientPackets.lobby))
         {
-            _packet.Write($"{create},{lobbyid},{width},{height},{bombcount},{supermine},{gamemode}");
+            _packet.Write($"{create},{lobbyid},{width},{height},{bombcount},{supermine},{gamemode},{Client.instance.NoChar}");
 
             SendTCPData(_packet);
         }

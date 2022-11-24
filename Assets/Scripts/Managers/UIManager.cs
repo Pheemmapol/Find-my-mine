@@ -117,7 +117,8 @@ public class UIManager : MonoBehaviour
                                 , int.Parse(bomb.captionText.text)
                                 , int.Parse(superbomb.captionText.text)
                                 , gameMode.value
-                                ,int.Parse(lobbyidText.text));
+                                ,int.Parse(lobbyidText.text)
+                                );
     }
 
     public void ShowError(string error)

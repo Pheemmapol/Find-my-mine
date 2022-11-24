@@ -50,7 +50,7 @@ public class ClientHandle : MonoBehaviour
 
     }
 
-    //get info data [name1,score1,name2,score2]
+    //get info data [name1,score1,name2,score2,char1,char2]
     public static void GetGenericInfo(Packet _packet)
     {
         string _msg = _packet.ReadString();
@@ -58,6 +58,7 @@ public class ClientHandle : MonoBehaviour
         if (GameManager.Instance.State != GameManager.GameState.Waiting) {
             GameUIManager.instance.UpdateNameText(info[0], info[2]);
             GameUIManager.instance.UpdateScore(info[1], info[3]);
+            GameUIManager.instance.UpdateCharacter(int.Parse(info[4]),int.Parse(info[5]));
         }
         Debug.Log($"Message from server: {_msg}");
     }
