@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
         {
             UpdateTime();
         }
-        if(timer < 0)
+        if(timer < 0 && State != GameState.GameOver)
         {
             Debug.Log("Out of time");
             ClientSend.SendClickPos(-1, -1);
