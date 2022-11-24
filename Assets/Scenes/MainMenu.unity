@@ -6632,8 +6632,6 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Reversed
       m_Image: {fileID: 0}
-    - m_Text: Battleship
-      m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:

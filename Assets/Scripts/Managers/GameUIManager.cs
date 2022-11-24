@@ -40,16 +40,7 @@ public class GameUIManager : MonoBehaviour
 
     }
 
-    private void RestartGame()
-    {
-        ClientSend.SendState(0);
-    }
 
-    private void BackToMenu()
-    {
-        ClientSend.SendState(1);
-        SceneManager.LoadScene(0);
-    }
     private void Start()
     {
         UpdateWaitingScreen();
@@ -136,5 +127,16 @@ public class GameUIManager : MonoBehaviour
     public void HideGameOver()
     {
         GameOverScreen.SetActive(false);
+    }
+
+    public void RestartGame()
+    {
+        ClientSend.SendState(0);
+    }
+
+    public void BackToMenu()
+    {
+        ClientSend.SendState(1);
+        SceneManager.LoadScene(0);
     }
 }

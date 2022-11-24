@@ -79,6 +79,9 @@ public class ClientHandle : MonoBehaviour
         string[] message = _msg.Split(',');
         switch (int.Parse(message[0]))
         {
+            case (-1):
+                GameUIManager.instance.BackToMenu();
+                break;
             case (0):
                 //reset board
                 TileManager.ResetBoard();
