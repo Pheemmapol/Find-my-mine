@@ -80,7 +80,7 @@ public class ClientHandle : MonoBehaviour
         switch (int.Parse(message[0]))
         {
             case (-1):
-                GameUIManager.instance.BackToMenu();
+                GameUIManager.instance.BackToMenu(false);
                 break;
             case (0):
                 //reset board

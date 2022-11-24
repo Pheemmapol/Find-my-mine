@@ -134,9 +134,9 @@ public class GameUIManager : MonoBehaviour
         ClientSend.SendState(0);
     }
 
-    public void BackToMenu()
+    public void BackToMenu(bool sentstate)
     {
-        ClientSend.SendState(1);
+        if(sentstate) ClientSend.SendState(1);
         SceneManager.LoadScene(0);
     }
 }

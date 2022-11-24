@@ -18,6 +18,7 @@ public class Client : MonoBehaviour
     private delegate void PacketHandler(Packet _packet);
     private static Dictionary<int, PacketHandler> packetHandlers;
     public bool darkmode = false;
+    public bool hasConnected = false;
     public int NoChar;
     private void Awake()
     {

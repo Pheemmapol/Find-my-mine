@@ -5,11 +5,12 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System.Globalization;
+using System.Security.Cryptography;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
-
+    
     public GameObject startMenu;
     public TMP_InputField usernameField;
     public TMP_InputField lobbyidField;
@@ -43,7 +44,13 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    
+    private void Start()
+    {
+        if (Client.instance.hasConnected)
+        {
+            ChangeToLobbyUI();
+        }
+    }
 
     public void ToggleTutorial()
     {
