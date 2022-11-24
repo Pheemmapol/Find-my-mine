@@ -136,6 +136,7 @@ public class GameUIManager : MonoBehaviour
 
     public void BackToMenu(bool sentstate)
     {
+        Client.instance.hasConnected = true;
         if(sentstate) ClientSend.SendState(1);
         SceneManager.LoadScene(0);
     }
