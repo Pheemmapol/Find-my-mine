@@ -725,7 +725,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &202050285
 RectTransform:
   m_ObjectHideFlags: 0
@@ -747,8 +747,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 841, y: -175}
-  m_SizeDelta: {x: 455.22925, y: 195.1637}
+  m_AnchoredPosition: {x: 821.375, y: -175}
+  m_SizeDelta: {x: 415.9792, y: 195.1637}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &202050286
 MonoBehaviour:
@@ -2438,7 +2438,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5, y: 104.00003}
+  m_AnchoredPosition: {x: 0, y: 343}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &495000633
@@ -2707,7 +2707,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1454, y: 0}
+  m_AnchoredPosition: {x: -1366, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &526048059
@@ -5161,7 +5161,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5, y: -67}
+  m_AnchoredPosition: {x: 18, y: 0}
   m_SizeDelta: {x: 491.76, y: 320.0096}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1238822160
@@ -5184,14 +5184,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '
-
-    -There are 11 bombs in the 6x6 grid.
-
-    -Each player takes turn
-    to find the bomb.
-
-    -Each player gets 1 point for every bomb found.'
+  m_text: "\nNormal Mode :\n- There are 11 bombs in the 6x6 grid.\n- Each player
+    has 10 second each turn to find the bomb.\n-vEach player gets 1 point for every
+    bomb found.\n\nMineSweeper Mode\n- Like normal mode, with the number attach to
+    the empty tile and show how many bomb its is adjacent to.\n\nReverse Mode\n-
+    The momoent you find bomb you lose!\n\nAddition\n- Supermines = 2 point \n- Cuztomizable
+    bombs and board"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5254,7 +5252,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -6.8897705, y: 0, z: 0, w: 0}
+  m_margin: {x: -6.8897705, y: -183.16681, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -6156,7 +6154,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1438360524
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6176,8 +6174,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 655, y: -175}
-  m_SizeDelta: {x: 455.2292, y: 195.1637}
+  m_AnchoredPosition: {x: 622, y: 59}
+  m_SizeDelta: {x: 455.2292, y: 669.4354}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1438360525
 MonoBehaviour:
@@ -7382,7 +7380,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 787, y: -388}
+  m_AnchoredPosition: {x: 754, y: -391.1358}
   m_SizeDelta: {x: 85.8101, y: 80.1465}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1553761032
